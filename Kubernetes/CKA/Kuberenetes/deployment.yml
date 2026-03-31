@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment/nginx-latest
+  name: deployment/nginx-latest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment/nginx-latest
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: deployment/nginx-latest
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: redis
+  name: redis
+spec:
+  containers:
+  - image: redis
+    name: redis
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+     - key: "gpu" # key of the taint
+       operator: "Equal"
+       value: "true" # value of the taint
+       effect: "NoSchedule"
+status: {}

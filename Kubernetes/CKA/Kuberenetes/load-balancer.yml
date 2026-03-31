@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-svc
+  labels:
+    env: demo
+spec:
+  type: LoadBalancer
+  # This section defines the ports that the LoadBalancer will listen on and forward to the target pods.
+  ports:
+  - port: 80 
+  #
+    targetPort: 80
+    # The selector is used to identify the pods that will receive traffic from this LoadBalancer service. In this case, it selects pods with the label "env: demo".
+  selector:
+    env: demo

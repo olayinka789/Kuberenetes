@@ -1,0 +1,15 @@
+# This file contains the configuration for a ClusterIP service in Kubernetes.
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-svc
+  labels:
+    env: demo
+spec:
+
+#
+  ports:
+  - port: 80 
+    targetPort: 80
+  selector:
+    env: demo
