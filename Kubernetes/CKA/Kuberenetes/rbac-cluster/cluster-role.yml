@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2026-04-01T15:36:00Z"
+  name: node-reader
+  resourceVersion: "132910"
+  uid: 4b7f0ed4-97fb-4f47-a5bb-1239fa343e79
+rules:
+- apiGroups:
+  - "" # The empty string "" indicates the core API group
+  resources:
+  - nodes # This specifies that the permissions apply to the "nodes" resource
+  verbs:
+  - get
+  - list
+  - watch

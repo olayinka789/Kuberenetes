@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding # This is a ClusterRoleBinding, which grants permissions cluster-wide
+metadata:
+  creationTimestamp: "2026-04-01T15:37:33Z"
+  name: node-reader-binding
+  resourceVersion: "133050"
+  uid: f21154ac-3e44-4840-8ed6-dfe14dbace2b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole 
+  name: node-reader # This should match the name of the ClusterRole defined in cluster-role.yml
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User # This indicates that we are granting permissions to a user
+  name: myuser # This should match the name of the user for whom you want to grant permissions
