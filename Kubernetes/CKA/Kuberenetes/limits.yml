@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-2
+  namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-2-ctr
+    image: polinux/stress
+    resources:
+      requests:
+        memory: "50Mi" # This is the request for memory, which is the amount of memory that the container is guaranteed to have.
+      limits:
+        memory: "100Mi" # This is the limit for memory, which is the maximum amount of memory that the container can use.
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "250M", "--vm-hang", "1"]
+                                       # This command will cause the container to use 250Mi of memory, which exceeds the limit of 100Mi. As a result, the container will be terminated by the Kubernetes system due to exceeding its memory limit.
