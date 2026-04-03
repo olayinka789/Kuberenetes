@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-test
+spec:
+  podSelector:
+    matchLabels:
+      name: mysql # Selects the db pod
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: backend # Only allows traffic from pods with the label role: backend
+    ports:
+    - port: 3306
