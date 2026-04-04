@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Test-argo
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/olayinka789/Kuberenetes.git
+    targetRevision: main # This can be a branch, tag, or commit hash. Here we use HEAD to always get the latest commit.
+    path: dev # This is the path within the repository where the Kubernetes manifests are located.
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true # This option allows Argo CD to create the target namespace if it does not exist.
+    
+    automated:
+      selfHeal: true # This option allows Argo CD to automatically correct any drift between the desired state in Git and the actual state in the cluster.
+      prune: true # This option allows Argo CD to automatically delete resources that are no longer defined in Git.
