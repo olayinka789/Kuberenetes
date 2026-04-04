@@ -4,11 +4,21 @@ metadata:
   name: nginx-deployment
   labels:
     app: nginx
+<<<<<<< HEAD
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: nginx
+=======
+  name:  nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+>>>>>>> 628a723 (argocd installed and tested locally)
   template:
     metadata:
       labels:
